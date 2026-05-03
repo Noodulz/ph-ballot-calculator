@@ -49,7 +49,7 @@ if st.button("Calculate"):
             result = subprocess.run([sys.executable, "calcs/allstars_calc_NOSPOILER.py", tmp_path], capture_output=True, text=True)
 
     if result.returncode == 0:
-        st.code(result.stdout, language=None)
+        st.code(result.stdout, language=None, line_numbers=False, wrap_lines=True)
     else:
         st.error("Error during calculation:")
         st.text(result.stderr)
