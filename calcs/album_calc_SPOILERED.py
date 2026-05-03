@@ -159,6 +159,18 @@ if __name__ == "__main__":
             line = line.strip()
             if not line:
                 continue
+            if line.startswith("BONUS TRACKS"):
+                # Finalize current album if any
+                if isRating and trackCount > 0:
+                    average = 0.0 if albumRating <= 0 else (albumRating / trackCount)
+                    albumAverages.append(average)
+                    print(f"||{average:.1f}||")
+                elif isRating and trackCount == 0:
+                    albumAverages.append(0.0)
+                    print(f"||0.0||")
+                # Skip all remaining lines until END
+                isRating = False
+                continue
             if line.startswith("END"):
                 if isRating and trackCount > 0:
                     average = 0.0 if albumRating <= 0 else (albumRating / trackCount)
