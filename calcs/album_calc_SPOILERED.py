@@ -49,6 +49,11 @@ def validate_ballot(rate_file):
         if stripped == "END":
             break
         
+        # Check for BONUS TRACKS section
+        if stripped.startswith("BONUS TRACKS"):
+            in_album = False
+            continue
+        
         # Check for Album line
         if stripped.startswith("Album:"):
             album_count += 1
