@@ -20,7 +20,7 @@ left_column, right_column = st.columns(2)
 
 with right_column:
     chosen = st.radio(
-        'Would you like to censor your scores for Discord pasting purposes?',
+        'Would you like to spoiler tag your scores for Discord pasting purposes?',
         ("Yes", "No"))
 
 st.text_area("Your ballot:", value="", height=150, key="ballot", label_visibility="visible", help="Paste your ballot here. Make sure that scores are no more than 1 decimal place, song comments are spaced after the score only if using them, album comments have a colon and space after the album title if using them, and only one song can have an 11 and one song can have a 0.")
