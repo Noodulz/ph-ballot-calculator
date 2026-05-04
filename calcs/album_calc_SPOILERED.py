@@ -141,6 +141,9 @@ if __name__ == "__main__":
 
     rate_file = sys.argv[1]
     
+    # Get precision, default to 1 decimal place if not provided
+    precision = int(sys.argv[2]) if len(sys.argv) > 2 else 1
+    
     # Validate the ballot first
     is_valid, error_msg = validate_ballot(rate_file)
     if not is_valid:
@@ -169,10 +172,10 @@ if __name__ == "__main__":
                 if isRating and trackCount > 0:
                     average = 0.0 if albumRating <= 0 else (albumRating / trackCount)
                     albumAverages.append(average)
-                    print(f"||{average:.1f}||")
+                    print(f"||{average:.{precision}f}||")
                 elif isRating and trackCount == 0:
                     albumAverages.append(0.0)
-                    print(f"||0.0||")
+                    print(f"||{0.0:.{precision}f}||")
                 # Skip all remaining lines until END
                 isRating = False
                 continue
@@ -180,10 +183,10 @@ if __name__ == "__main__":
                 if isRating and trackCount > 0:
                     average = 0.0 if albumRating <= 0 else (albumRating / trackCount)
                     albumAverages.append(average)
-                    print(f"||{average:.1f}||")
+                    print(f"||{average:.{precision}f}||")
                 elif isRating and trackCount == 0:
                     albumAverages.append(0.0)
-                    print(f"||0.0||")
+                    print(f"||{0.0:.{precision}f}||")
                 
                 # Print special stats at the end
                 print()
@@ -199,10 +202,10 @@ if __name__ == "__main__":
                 if isRating and trackCount > 0:
                     average = 0.0 if albumRating <= 0 else (albumRating / trackCount)
                     albumAverages.append(average)
-                    print(f"||{average:.1f}||")
+                    print(f"||{average:.{precision}f}||")
                 elif isRating and trackCount == 0:
                     albumAverages.append(0.0)
-                    print(f"||0.0||")
+                    print(f"||{0.0:.{precision}f}||")
                 # Extract only the album title, ignore anything after the second colon
                 album_info = line.split(":", 1)[1].strip()
                 # If there's a second colon, take only what's before it
@@ -243,4 +246,4 @@ if __name__ == "__main__":
                     print(f"Could not extract rating from line: {line}")
 
     if albumAverages:
-        print("\nAvg: ||{:.3f}||".format(sum(albumAverages) / len(albumAverages)))
+        print("\nAvg: ||{:.{precision}f}||".format(sum(albumAverages) / len(albumAverages), precision=precision))

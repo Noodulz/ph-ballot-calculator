@@ -7,6 +7,9 @@ if len(sys.argv) < 2:
 
 rate_file = sys.argv[1]
 
+# Get precision, default to 1 decimal place if not provided
+precision = int(sys.argv[2]) if len(sys.argv) > 2 else 1
+
 # Read the file
 with open(rate_file, 'r') as f:
     content = f.read()
@@ -50,4 +53,4 @@ average = sum(ratings) / len(ratings) if ratings else 0
 print(f"11: {', '.join(rating_11) if rating_11 else 'None'}")
 print(f"10s: {', '.join(rating_10) if rating_10 else 'None'}")
 print(f"0: {', '.join(rating_0) if rating_0 else 'None'}")
-print(f"\nAvg: {average:.3f}")
+print(f"\nAvg: {average:.{precision}f}")
