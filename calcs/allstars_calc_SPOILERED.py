@@ -50,4 +50,4 @@ average = sum(ratings) / len(ratings) if ratings else 0
 print(f"11: ||{', '.join(rating_11) if rating_11 else 'None'}||")
 print(f"10s: ||{', '.join(rating_10) if rating_10 else 'None'}||")
 print(f"0: ||{', '.join(rating_0) if rating_0 else 'None'}||")
-print(f"\nAvg: ||{average:.2f}||")
+print(f"\nAvg: ||{average:.3f}||")

@@ -243,4 +243,4 @@ if __name__ == "__main__":
                     print(f"Could not extract rating from line: {line}")
 
     if albumAverages:
-        print("\nAvg: {:.2f}".format(sum(albumAverages) / len(albumAverages)))
+        print("\nAvg: {:.3f}".format(sum(albumAverages) / len(albumAverages)))
