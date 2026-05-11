@@ -157,7 +157,7 @@ if st.button("Calculate"):
             
             # Score Distribution Histogram
             st.markdown("---")
-            st.markdown("## Score Distribution")
+            st.markdown("## Song Score Distribution")
             
             # Create score bins (0-11)
             df['score_bin'] = df['rating'].apply(lambda x: int(x))
